@@ -116,6 +116,7 @@ export const COLORS = {
   grayText: '#858585',
   white: '#FFFFFF',
   black: '#000000',
+  transparent: '#00000000',
 };
 
 // Fonts

@@ -9,6 +9,7 @@ import {
   ImageSourcePropType,
 } from 'react-native';
 import { COLORS, FONTS } from '@/constants';
+import { width, height } from '@/constants/Dimensions';
 
 type InputFieldProps = {
   label: string;
@@ -55,19 +56,19 @@ const InputField: React.FC<InputFieldProps> = ({
 
 const styles = StyleSheet.create({
   accountInputContainer: {
-    marginVertical: 2,
+    marginVertical: height * 0.003,
   },
   inputText: {
-    fontSize: 16,
+    fontSize: width * 0.04,
     fontFamily: FONTS.semiBold,
-    marginBottom: 10,
-    marginTop: 10,
+    marginBottom: height * 0.01,
+    marginTop: height * 0.01,
   },
   inputIcon: {
-    width: 25,
-    height: 25,
-    left: 10,
-    top: 2,
+    width: width * 0.053,
+    height: width * 0.053,
+    left: width * 0.03,
+    top: height * 0.002,
     tintColor: COLORS.gray,
   },
   inputFieldContainer: {
@@ -76,14 +77,14 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.grayLight,
     borderWidth: 0.5,
     borderRadius: 9999,
-    padding: 10,
+    padding: width * 0.025,
   },
   textInputContainer: {
     borderRadius: 9999,
-    marginLeft: 20,
-    padding: 6,
+    marginLeft: width * 0.05,
+    padding: width * 0.015,
     fontFamily: FONTS.semiBold,
-    fontSize: 16,
+    fontSize: width * 0.04,
     flex: 1,
   },
 });

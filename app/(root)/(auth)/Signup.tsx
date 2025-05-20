@@ -5,6 +5,7 @@ import { useState } from 'react';
 import InputField from '@/components/InputField';
 import CustomButton from '@/components/CustomButton';
 import { Link } from 'expo-router';
+import OAuth from '@/components/OAuth';
 
 const Signup = () => {
   const [form, setForm] = useState({
@@ -60,7 +61,10 @@ const Signup = () => {
                   onPress={onSignUpPress}
                   style={styles.customButton}
                 />
+                
                 {/* OAuth */}
+                <OAuth />
+
                 <Link href={"/(root)/(auth)/Signin"} style={styles.alreadyLink}>
                   <Text>Already have an account?  </Text>
                   <Text style={styles.alreadyLogin}>Log In</Text>
@@ -106,17 +110,17 @@ const styles = StyleSheet.create({
     left: width * 0.05,
   },
   inputContainer: {
-    padding: width * 0.05,
+    padding: width * 0.06,
   },
   customButton: {
     width: width * 0.9,
-    marginTop: height * 0.05,
+    marginTop: height * 0.035,
   },
   alreadyLink: {
     fontSize: 14,
     textAlign: 'center',
     fontWeight: '200',
-    marginTop: height * 0.02,
+    marginTop: height * 0.008,
     fontFamily: FONTS.regular,
   },
   alreadyLogin: {

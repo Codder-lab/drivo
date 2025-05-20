@@ -6,6 +6,7 @@ import {
   GestureResponderEvent,
   ViewStyle,
   TextStyle,
+  View,
 } from 'react-native';
 import { COLORS, FONTS } from '@/constants';
 import { width, height } from '@/constants/Dimensions';
@@ -15,6 +16,8 @@ type CustomButtonProps = {
   onPress: (event: GestureResponderEvent) => void;
   style?: ViewStyle;
   textStyle?: TextStyle;
+  IconLeft?: () => React.ReactNode;
+  IconRight?: () => React.ReactNode;
 };
 
 const CustomButton: React.FC<CustomButtonProps> = ({
@@ -22,6 +25,8 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   onPress,
   style = {},
   textStyle = {},
+  IconLeft,
+  IconRight,
 }) => {
   return (
     <TouchableOpacity
@@ -29,7 +34,9 @@ const CustomButton: React.FC<CustomButtonProps> = ({
       onPress={onPress}
       activeOpacity={0.8}
     >
+      {IconLeft && <View>{IconLeft()}</View>}
       <Text style={[styles.buttonText, textStyle]}>{title}</Text>
+      {IconRight && <View>{IconRight()}</View>}
     </TouchableOpacity>
   );
 };
@@ -38,7 +45,7 @@ const styles = StyleSheet.create({
   button: {
     width: width * 0.8,
     borderRadius: width * 0.1,
-    padding: width * 0.035,
+    padding: width * 0.04,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -48,11 +55,11 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
     elevation: 3,
     backgroundColor: COLORS.primary,
-    marginBottom: height * 0.035,
+    marginBottom: height * 0.025,
   },
   buttonText: {
     color: COLORS.white,
-    fontSize: width * 0.045,
+    fontSize: width * 0.04,
     fontWeight: 'bold',
     fontFamily: FONTS.bold,
   },
