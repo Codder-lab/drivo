@@ -67,9 +67,9 @@ const styles = StyleSheet.create({
   skipBtn: {
     //width: '100%',
     alignItems: 'flex-end',
-    padding: width * 0.06,
+    padding: width * 0.08,
     position: 'absolute',
-    top: 0,
+    top: width * 0.045,
     right: 0,
     zIndex: 1,
   },
