@@ -1,22 +1,23 @@
-import { COLORS, FONTS, icons } from '@/constants';
-import { View, StyleSheet, Text, Image } from 'react-native';
+import { LightColors, DarkColors, FONTS, icons } from '@/constants';
+import { View, StyleSheet, Text, Image, useColorScheme } from 'react-native';
 import { width, height } from '@/constants/Dimensions';
 import CustomButton from './CustomButton';
 
 const OAuth = () => {
     const handleGoogleSignIn = async () => {};
+    const theme = useColorScheme() === 'dark' ? DarkColors : LightColors;
 
   return (
     <View>
       <View style={styles.container}>
-        <View style={styles.authContainer} />
+        <View style={[styles.authContainer, { backgroundColor: theme.grayMedium }]} />
         <Text style={styles.authText}>Or</Text>
         <View style={styles.authContainer} />
       </View>
 
       <CustomButton
         title="Sign In With Google"
-        style={styles.customButton}
+        style={[styles.customButton, { backgroundColor: theme.black }]}
         IconLeft={() => (
           <Image
             source={icons.google}
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
   authContainer: {
     flex: 1,
     height: height * 0.001,
-    backgroundColor: COLORS.grayMedium,
+    //backgroundColor: COLORS.grayMedium,
     marginHorizontal: width * 0.03,
   },
   authText: {
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop: height * 0.03,
     shadowColor: '#000',
-    backgroundColor: COLORS.black,
+    //backgroundColor: COLORS.black,
   },
   icon: {
     width: 15,

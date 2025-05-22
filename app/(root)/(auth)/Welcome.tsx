@@ -1,10 +1,10 @@
 import { onboarding } from '@/constants';
 import { router } from 'expo-router';
 import { useRef, useState } from 'react';
-import { Text, StyleSheet, TouchableOpacity, View, Image } from 'react-native';
+import { Text, StyleSheet, TouchableOpacity, View, Image, useColorScheme } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Swiper from 'react-native-swiper';
-import { COLORS, FONTS } from '@/constants';
+import { LightColors, DarkColors, FONTS } from '@/constants';
 import { width, height } from '@/constants/Dimensions';
 import CustomButton from '@/components/CustomButton';
 
@@ -12,31 +12,32 @@ const Welcome = () => {
   const swiperRef = useRef<Swiper>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const isLastSlide = currentIndex === onboarding.length - 1;
+  const theme = useColorScheme() === 'dark' ? DarkColors : LightColors;
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]}>
       <TouchableOpacity
         onPress={() => {
           router.replace('/(root)/(auth)/Signup');
         }}
         style={styles.skipBtn}
       >
-        <Text style={styles.textBtn}>Skip</Text>
+        <Text style={[styles.textBtn, { color: theme.primary }]}>Skip</Text>
       </TouchableOpacity>
       <Swiper
         ref={swiperRef}
         loop={false}
-        dot={<View style={styles.dot} />}
-        activeDot={<View style={styles.activeDot} />}
+        dot={<View style={[styles.dot, { backgroundColor: theme.gray }]} />}
+        activeDot={<View style={[styles.activeDot, { backgroundColor: theme.primary }]} />}
         onIndexChanged={(index) => setCurrentIndex(index)}
       >
         {onboarding.map((item) => (
           <View key={item.id} style={styles.onboardingContainer}>
             <Image source={item.image} style={styles.onboardingImage} />
             <View style={styles.onboardingTextContainer}>
-              <Text style={styles.onboardingText}>{item.title}</Text>
+              <Text style={[styles.onboardingText, { color: theme.primary }]}>{item.title}</Text>
             </View>
-            <Text style={styles.onboardingDescription}>{item.description}</Text>
+            <Text style={[styles.onboardingDescription, { color: theme.grayText }]}>{item.description}</Text>
           </View>
         ))}
       </Swiper>
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: COLORS.white,
+    //backgroundColor: COLORS.white,
     height: height * 1,
   },
   skipBtn: {
@@ -74,7 +75,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   textBtn: {
-    color: COLORS.black,
+    //color: COLORS.black,
     fontSize: width * 0.038,
     fontFamily: FONTS.bold,
   },
@@ -82,14 +83,14 @@ const styles = StyleSheet.create({
     width: width * 0.08,
     height: height * 0.005,
     marginHorizontal: 1,
-    backgroundColor: COLORS.grayMedium,
+    //backgroundColor: COLORS.grayMedium,
     borderRadius: 999,
   },
   activeDot: {
     width: width * 0.08,
     height: height * 0.005,
     marginHorizontal: 1,
-    backgroundColor: COLORS.primary,
+    //backgroundColor: COLORS.primary,
     borderRadius: width * 0.08,
   },
   onboardingContainer: {
@@ -112,14 +113,14 @@ const styles = StyleSheet.create({
     marginTop: width * 0.05,
   },
   onboardingText: {
-    color: COLORS.black,
+    //color: COLORS.black,
     fontSize: width * 0.065,
     fontFamily: FONTS.bold,
     marginHorizontal: width * 0.07,
     textAlign: 'center',
   },
   onboardingDescription: {
-    color: COLORS.grayText,
+    //color: COLORS.grayText,
     fontSize: width * 0.04,
     fontFamily: FONTS.semiBold,
     textAlign: 'center',

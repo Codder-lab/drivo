@@ -7,8 +7,9 @@ import {
   ViewStyle,
   TextStyle,
   View,
+  useColorScheme,
 } from 'react-native';
-import { COLORS, FONTS } from '@/constants';
+import { LightColors, DarkColors, FONTS } from '@/constants';
 import { width, height } from '@/constants/Dimensions';
 
 type CustomButtonProps = {
@@ -28,14 +29,16 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   IconLeft,
   IconRight,
 }) => {
+  const theme = useColorScheme() === 'dark' ? DarkColors : LightColors;
+
   return (
     <TouchableOpacity
-      style={[styles.button, style]}
+      style={[styles.button, style, { backgroundColor: theme.primary }]}
       onPress={onPress}
       activeOpacity={0.8}
     >
       {IconLeft && <View>{IconLeft()}</View>}
-      <Text style={[styles.buttonText, textStyle]}>{title}</Text>
+      <Text style={[styles.buttonText, textStyle, { color: theme.textPrimary }]}>{title}</Text>
       {IconRight && <View>{IconRight()}</View>}
     </TouchableOpacity>
   );
@@ -54,11 +57,11 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 3,
     elevation: 3,
-    backgroundColor: COLORS.primary,
+    //backgroundColor: COLORS.primary,
     marginBottom: height * 0.025,
   },
   buttonText: {
-    color: COLORS.white,
+    //color: COLORS.white,
     fontSize: width * 0.04,
     fontWeight: 'bold',
     fontFamily: FONTS.bold,

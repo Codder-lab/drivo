@@ -7,8 +7,9 @@ import {
   StyleSheet,
   TextInputProps,
   ImageSourcePropType,
+  useColorScheme,
 } from 'react-native';
-import { COLORS, FONTS } from '@/constants';
+import { LightColors, DarkColors, FONTS } from '@/constants';
 import { width, height } from '@/constants/Dimensions';
 
 type InputFieldProps = {
@@ -29,6 +30,7 @@ const InputField: React.FC<InputFieldProps> = ({
     onChangeText,
   }) => {
   const [isFocused, setIsFocused] = useState(false);
+  const theme = useColorScheme() === 'dark' ? DarkColors : LightColors;
 
   return (
     <View style={styles.accountInputContainer}>
@@ -36,7 +38,8 @@ const InputField: React.FC<InputFieldProps> = ({
       <View
         style={[
           styles.inputFieldContainer,
-          { borderColor: isFocused ? COLORS.primary : COLORS.grayLight },
+          { borderColor: isFocused ? theme.primary : theme.grayLight },
+          { backgroundColor: theme.grayLight },
         ]}
       >
         {icon && <Image source={icon} style={styles.inputIcon} />}
@@ -69,12 +72,12 @@ const styles = StyleSheet.create({
     height: width * 0.053,
     left: width * 0.03,
     top: height * 0.002,
-    tintColor: COLORS.gray,
+    //tintColor: COLORS.gray,
   },
   inputFieldContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: COLORS.grayLight,
+    //backgroundColor: COLORS.grayLight,
     borderWidth: 0.5,
     borderRadius: 9999,
     padding: width * 0.025,

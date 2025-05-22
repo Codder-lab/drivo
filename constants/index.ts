@@ -30,14 +30,16 @@ import noResult from '@/assets/images/no-result.png';
 import onboarding1 from '@/assets/images/onboarding1.png';
 import onboarding2 from '@/assets/images/onboarding2.png';
 import onboarding3 from '@/assets/images/onboarding3.png';
-import signUpCar from '@/assets/images/signup-car.png';
+import carDark from '@/assets/images/car-dark.png';
+import carLight from '@/assets/images/car-light.png';
 
 export const images = {
   onboarding1,
   onboarding2,
   onboarding3,
   getStarted,
-  signUpCar,
+  signUpCar: carLight,
+  signUpCarDark: carDark,
   check,
   noResult,
   message,
@@ -99,21 +101,45 @@ export const data = {
   onboarding,
 };
 
-// Colors
-export const COLORS = {
+// Color schemes
+export const LightColors = {
   primary: '#0286FF',
-  gray: '#6B7280', // Tailwind gray-500
-  grayMedium: '#D1D5DB', // Tailwind gray-300
-  grayLight: '#F3F4F6', // Tailwind gray-100
-  danger: '#EF4444', // Tailwind red-500
-  success: '#22C55E', // Tailwind green-500
-  outlineBorder: '#D1D5DB', // Tailwind neutral-300
+  background: '#FFFFFF',
+  card: '#F9F9F9',
+  gray: '#6B7280',
+  grayMedium: '#D1D5DB',
+  grayLight: '#F3F4F6',
+  danger: '#EF4444',
+  success: '#22C55E',
+  outlineBorder: '#D1D5DB',
   textPrimary: '#000000',
-  textSecondary: '#F3F4F6', // Tailwind gray-100
-  textDanger: '#FEE2E2', // Tailwind red-100
-  textSuccess: '#DCFCE7', // Tailwind green-100
-  textDefault: '#FFFFFF',
+  textSecondary: '#6B7280',
+  textDanger: '#FEE2E2',
+  textSuccess: '#DCFCE7',
+  textDefault: '#000000',
   grayText: '#858585',
+  white: '#FFFFFF',
+  black: '#000000',
+  transparent: '#00000000',
+};
+
+// Dark mode color scheme
+export const DarkColors = {
+  primary: '#66B5FF',
+  background: '#333231',
+  card: '#161B22',
+  gray: '#9CA3AF',
+  grayMedium: '#374151',
+  grayLight: '#1F2937',
+  danger: '#EF4444',
+  success: '#22C55E',
+  outlineBorder: '#374151',
+  textPrimary: '#FFFFFF',
+  textSecondary: '#9CA3AF',
+  textDanger: '#FCA5A5',
+  textSuccess: '#86EFAC',
+  textDefault: '#FFFFFF',
+  grayText: '#d4cccb',
   white: '#FFFFFF',
   black: '#000000',
   transparent: '#00000000',

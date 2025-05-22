@@ -1,5 +1,5 @@
-import { Image, Keyboard, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View } from 'react-native';
-import { COLORS, images, FONTS, icons } from '@/constants';
+import { Image, Keyboard, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View, useColorScheme } from 'react-native';
+import { LightColors, DarkColors, images, FONTS, icons } from '@/constants';
 import { width, height } from '@/constants/Dimensions';
 import { useState } from 'react';
 import InputField from '@/components/InputField';
@@ -17,13 +17,15 @@ const Signup = () => {
   const onSignUpPress = async () => {
 
   }
+  const theme = useColorScheme() === 'dark' ? DarkColors : LightColors;
+  const signUpImage = useColorScheme() === 'dark' ? images.signUpCar : images.signUpCarDark;
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.imageContainer}>
+    <ScrollView style={[styles.container, { backgroundColor: theme.background }]}>
+      <View style={[styles.imageContainer, { backgroundColor: theme.background }]}>
         <View style={styles.imageView}>
-          <Image source={images.signUpCar} style={styles.image} />
-          <Text style={styles.createAccountText}>Create Your Account</Text>
+          <Image source={signUpImage} style={styles.image} />
+          <Text style={[styles.createAccountText, { color: theme.black }]}>Create Your Account</Text>
         </View>
 
         <View style={styles.inputContainer}>
@@ -67,7 +69,7 @@ const Signup = () => {
 
                 <Link href={"/(root)/(auth)/Signin"} style={styles.alreadyLink}>
                   <Text>Already have an account?  </Text>
-                  <Text style={styles.alreadyLogin}>Log In</Text>
+                  <Text style={[styles.alreadyLogin, { color: theme.primary }]}>Log In</Text>
                 </Link>
 
                 { /* Google Verification */ }
@@ -85,11 +87,11 @@ export default Signup;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.white,
+    //backgroundColor: COLORS.white,
   },
   imageContainer: {
     flex: 1,
-    backgroundColor: COLORS.white,
+    //backgroundColor: COLORS.white,
   },
   imageView: {
     position: 'relative',
@@ -103,7 +105,7 @@ const styles = StyleSheet.create({
   },
   createAccountText: {
     fontSize: 24,
-    color: COLORS.black,
+    //color: COLORS.black,
     fontFamily: FONTS.bold,
     position: 'absolute',
     top: height * 0.225,
@@ -124,7 +126,7 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.regular,
   },
   alreadyLogin: {
-    color: COLORS.primary,
+    //color: COLORS.primary,
     fontSize: 14,
   }
 })
