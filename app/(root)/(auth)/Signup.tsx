@@ -1,4 +1,16 @@
-import { Image, Keyboard, KeyboardAvoidingView, Platform, ScrollView, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View, useColorScheme } from 'react-native';
+import {
+  Image,
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableWithoutFeedback,
+  View,
+  useColorScheme,
+} from 'react-native';
 import { LightColors, DarkColors, images, FONTS, icons } from '@/constants';
 import { width, height } from '@/constants/Dimensions';
 import { useState } from 'react';
@@ -12,71 +24,71 @@ const Signup = () => {
     name: '',
     email: '',
     password: '',
-  })
+  });
   const [isFocused, setIsFocused] = useState(false);
-  const onSignUpPress = async () => {
-
-  }
+  const onSignUpPress = async () => {};
   const theme = useColorScheme() === 'dark' ? DarkColors : LightColors;
-  const signUpImage = useColorScheme() === 'dark' ? images.signUpCar : images.signUpCarDark;
+  const signUpImage =
+    useColorScheme() === 'dark' ? images.signUpCarDark : images.signUpCar;
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: theme.background }]}>
-      <View style={[styles.imageContainer, { backgroundColor: theme.background }]}>
-        <View style={styles.imageView}>
-          <Image source={signUpImage} style={styles.image} />
-          <Text style={[styles.createAccountText, { color: theme.black }]}>Create Your Account</Text>
-        </View>
+    <ScrollView
+      style={[styles.container, { backgroundColor: theme.background }]}
+    >
+      <View style={styles.createAccountContainer}>
+        <Text style={[styles.createAccountText, { color: theme.black }]}>
+          Create Your Account
+        </Text>
+      </View>
 
-        <View style={styles.inputContainer}>
-          <KeyboardAvoidingView
-            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-          >
-            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-              <View>
-                <InputField
-                  label="Name"
-                  placeholder="Enter your name"
-                  icon={icons.person}
-                  value={form.name}
-                  onChangeText={(value) => setForm({ ...form, name: value })}
-                />
-                <InputField
-                  label="Email"
-                  placeholder="Enter your email"
-                  icon={icons.email}
-                  value={form.email}
-                  onChangeText={(value) => setForm({ ...form, email: value })}
-                />
-                <InputField
-                  label="Password"
-                  placeholder="Enter your password"
-                  icon={icons.lock}
-                  secureTextEntry={true}
-                  value={form.password}
-                  onChangeText={(value) =>
-                    setForm({ ...form, password: value })
-                  }
-                />
-                <CustomButton
-                  title="Sign Up"
-                  onPress={onSignUpPress}
-                  style={styles.customButton}
-                />
-                
-                {/* OAuth */}
-                <OAuth />
+      <View style={styles.inputContainer}>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        >
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View>
+              <InputField
+                label="Name"
+                placeholder="Enter your name"
+                icon={icons.person}
+                value={form.name}
+                onChangeText={(value) => setForm({ ...form, name: value })}
+              />
+              <InputField
+                label="Email"
+                placeholder="Enter your email"
+                icon={icons.email}
+                value={form.email}
+                onChangeText={(value) => setForm({ ...form, email: value })}
+              />
+              <InputField
+                label="Password"
+                placeholder="Enter your password"
+                icon={icons.lock}
+                secureTextEntry={true}
+                value={form.password}
+                onChangeText={(value) => setForm({ ...form, password: value })}
+              />
+              <CustomButton
+                title="Sign Up"
+                onPress={onSignUpPress}
+                style={styles.customButton}
+              />
 
-                <Link href={"/(root)/(auth)/Signin"} style={styles.alreadyLink}>
-                  <Text>Already have an account?  </Text>
-                  <Text style={[styles.alreadyLogin, { color: theme.primary }]}>Log In</Text>
-                </Link>
+              {/* OAuth */}
+              <OAuth />
 
-                { /* Google Verification */ }
-              </View>
-            </TouchableWithoutFeedback>
-          </KeyboardAvoidingView>
-        </View>
+              <Link href={'/(root)/(auth)/Signin'} style={[styles.alreadyLink, { color: theme.gray }]}>
+                <Text>Already have an account? </Text>
+                <Text style={[styles.alreadyLogin, { color: theme.black }]}>
+                  Log In
+                </Text>
+              </Link>
+
+              {/* Google Verification */}
+            </View>
+          </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
       </View>
     </ScrollView>
   );
@@ -89,26 +101,19 @@ const styles = StyleSheet.create({
     flex: 1,
     //backgroundColor: COLORS.white,
   },
-  imageContainer: {
+  createAccountContainer: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
     //backgroundColor: COLORS.white,
-  },
-  imageView: {
-    position: 'relative',
-    width: width,
-    height: height * 0.3,
-  },
-  image: {
-    zIndex: 0,
-    width: width,
-    height: height * 0.3,
+    height: height * 0.15,
   },
   createAccountText: {
-    fontSize: 24,
+    fontSize: width * 0.08,
     //color: COLORS.black,
     fontFamily: FONTS.bold,
     position: 'absolute',
-    top: height * 0.225,
+    top: height * 0.08,
     left: width * 0.05,
   },
   inputContainer: {
@@ -128,5 +133,5 @@ const styles = StyleSheet.create({
   alreadyLogin: {
     //color: COLORS.primary,
     fontSize: 14,
-  }
-})
+  },
+});

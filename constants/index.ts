@@ -126,7 +126,7 @@ export const LightColors = {
 // Dark mode color scheme
 export const DarkColors = {
   primary: '#66B5FF',
-  background: '#333231',
+  background: '#121212',
   card: '#161B22',
   gray: '#9CA3AF',
   grayMedium: '#374151',
@@ -140,8 +140,8 @@ export const DarkColors = {
   textSuccess: '#86EFAC',
   textDefault: '#FFFFFF',
   grayText: '#d4cccb',
-  white: '#FFFFFF',
-  black: '#000000',
+  white: '#000000',
+  black: '#FFFFFF',
   transparent: '#00000000',
 };
 

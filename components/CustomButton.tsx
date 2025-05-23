@@ -33,12 +33,12 @@ const CustomButton: React.FC<CustomButtonProps> = ({
 
   return (
     <TouchableOpacity
-      style={[styles.button, style, { backgroundColor: theme.primary }]}
+      style={[styles.button, style, { backgroundColor: theme.black }]}
       onPress={onPress}
       activeOpacity={0.8}
     >
       {IconLeft && <View>{IconLeft()}</View>}
-      <Text style={[styles.buttonText, textStyle, { color: theme.textPrimary }]}>{title}</Text>
+      <Text style={[styles.buttonText, textStyle, { color: theme.white }]}>{title}</Text>
       {IconRight && <View>{IconRight()}</View>}
     </TouchableOpacity>
   );

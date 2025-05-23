@@ -22,20 +22,20 @@ const Welcome = () => {
         }}
         style={styles.skipBtn}
       >
-        <Text style={[styles.textBtn, { color: theme.primary }]}>Skip</Text>
+        <Text style={[styles.textBtn, { color: theme.black }]}>Skip</Text>
       </TouchableOpacity>
       <Swiper
         ref={swiperRef}
         loop={false}
-        dot={<View style={[styles.dot, { backgroundColor: theme.gray }]} />}
-        activeDot={<View style={[styles.activeDot, { backgroundColor: theme.primary }]} />}
+        dot={<View style={[styles.dot, { backgroundColor: theme.grayMedium }]} />}
+        activeDot={<View style={[styles.activeDot, { backgroundColor: theme.black }]} />}
         onIndexChanged={(index) => setCurrentIndex(index)}
       >
         {onboarding.map((item) => (
           <View key={item.id} style={styles.onboardingContainer}>
             <Image source={item.image} style={styles.onboardingImage} />
             <View style={styles.onboardingTextContainer}>
-              <Text style={[styles.onboardingText, { color: theme.primary }]}>{item.title}</Text>
+              <Text style={[styles.onboardingText, { color: theme.black }]}>{item.title}</Text>
             </View>
             <Text style={[styles.onboardingDescription, { color: theme.grayText }]}>{item.description}</Text>
           </View>
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     width: width * 0.9,
-    marginTop: width * 0.05,
+    marginTop: width * 0.01,
   },
   onboardingText: {
     //color: COLORS.black,
@@ -125,6 +125,6 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.semiBold,
     textAlign: 'center',
     marginHorizontal: width * 0.07,
-    marginBottom: height * 0.24,
+    marginBottom: height * 0.22,
   }
 });

@@ -34,11 +34,11 @@ const InputField: React.FC<InputFieldProps> = ({
 
   return (
     <View style={styles.accountInputContainer}>
-      <Text style={styles.inputText}>{label}</Text>
+      <Text style={[styles.inputText, { color: theme.black }]}>{label}</Text>
       <View
         style={[
           styles.inputFieldContainer,
-          { borderColor: isFocused ? theme.primary : theme.grayLight },
+          { borderColor: isFocused ? theme.black : theme.grayLight },
           { backgroundColor: theme.grayLight },
         ]}
       >
@@ -48,9 +48,10 @@ const InputField: React.FC<InputFieldProps> = ({
           value={value}
           secureTextEntry={secureTextEntry}
           onChangeText={onChangeText}
-          style={styles.textInputContainer}
+          style={[styles.textInputContainer, { color: theme.black }]}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
+          placeholderTextColor={theme.gray}
         />
       </View>
     </View>

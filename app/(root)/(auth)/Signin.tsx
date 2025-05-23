@@ -26,58 +26,60 @@ const Signin = () => {
   const [isFocused, setIsFocused] = useState(false);
   const onSignInPress = async () => {};
   const theme = useColorScheme() === 'dark' ? DarkColors : LightColors;
-  const signInImage = useColorScheme() =='dark' ? images.signUpCar : images.signUpCarDark;
+  const signInImage =
+    useColorScheme() == 'dark' ? images.signUpCar : images.signUpCarDark;
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: theme.background }]}>
-      <View style={[styles.imageContainer, { backgroundColor: theme.background }]}>
-        <View style={styles.imageView}>
-          <Image source={signInImage} style={styles.image} />
-          <Text style={[styles.createAccountText, { color: theme.black }]}>👋 Welcome</Text>
-        </View>
+    <ScrollView
+      style={[styles.container, { backgroundColor: theme.background }]}
+    >
+      <View style={styles.createAccountContainer}>
+        <Text style={[styles.createAccountText, { color: theme.black }]}>
+          👋 Welcome
+        </Text>
+      </View>
 
-        <View style={styles.inputContainer}>
-          <KeyboardAvoidingView
-            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-          >
-            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-              <View>
-                <InputField
-                  label="Email"
-                  placeholder="Enter your email"
-                  icon={icons.email}
-                  value={form.email}
-                  onChangeText={(value) => setForm({ ...form, email: value })}
-                />
-                <InputField
-                  label="Password"
-                  placeholder="Enter your password"
-                  icon={icons.lock}
-                  secureTextEntry={true}
-                  value={form.password}
-                  onChangeText={(value) =>
-                    setForm({ ...form, password: value })
-                  }
-                />
-                <CustomButton
-                  title="Log In"
-                  onPress={onSignInPress}
-                  style={styles.customButton}
-                />
+      <View style={styles.inputContainer}>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        >
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View>
+              <InputField
+                label="Email"
+                placeholder="Enter your email"
+                icon={icons.email}
+                value={form.email}
+                onChangeText={(value) => setForm({ ...form, email: value })}
+              />
+              <InputField
+                label="Password"
+                placeholder="Enter your password"
+                icon={icons.lock}
+                secureTextEntry={true}
+                value={form.password}
+                onChangeText={(value) => setForm({ ...form, password: value })}
+              />
+              <CustomButton
+                title="Log In"
+                onPress={onSignInPress}
+                style={styles.customButton}
+              />
 
-                {/* OAuth */}
-                <OAuth />
+              {/* OAuth */}
+              <OAuth />
 
-                <Link href={'/(root)/(auth)/Signup'} style={styles.alreadyLink}>
-                  <Text>Don't have an account? </Text>
-                  <Text style={[styles.alreadyLogin, { color: theme.primary }]}>Sign Up</Text>
-                </Link>
+              <Link href={'/(root)/(auth)/Signup'} style={[styles.alreadyLink, { color: theme.gray }]}>
+                <Text>Don't have an account? </Text>
+                <Text style={[styles.alreadyLogin, { color: theme.black }]}>
+                  Sign Up
+                </Text>
+              </Link>
 
-                {/* Google Verification */}
-              </View>
-            </TouchableWithoutFeedback>
-          </KeyboardAvoidingView>
-        </View>
+              {/* Google Verification */}
+            </View>
+          </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
       </View>
     </ScrollView>
   );
@@ -90,26 +92,19 @@ const styles = StyleSheet.create({
     flex: 1,
     //backgroundColor: COLORS.white,
   },
-  imageContainer: {
+  createAccountContainer: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
     //backgroundColor: COLORS.white,
-  },
-  imageView: {
-    position: 'relative',
-    width: width,
-    height: height * 0.3,
-  },
-  image: {
-    zIndex: 0,
-    width: width,
-    height: height * 0.3,
+    height: height * 0.15,
   },
   createAccountText: {
-    fontSize: 24,
+    fontSize: width * 0.08,
     //color: COLORS.black,
     fontFamily: FONTS.bold,
     position: 'absolute',
-    top: height * 0.225,
+    top: height * 0.08,
     left: width * 0.05,
   },
   inputContainer: {

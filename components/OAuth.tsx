@@ -10,9 +10,9 @@ const OAuth = () => {
   return (
     <View>
       <View style={styles.container}>
-        <View style={[styles.authContainer, { backgroundColor: theme.grayMedium }]} />
-        <Text style={styles.authText}>Or</Text>
-        <View style={styles.authContainer} />
+        <View style={[styles.authContainer, { backgroundColor: theme.gray }]} />
+        <Text style={[styles.authText, { color: theme.black }]}>OR</Text>
+        <View style={[styles.authContainer, { backgroundColor: theme.gray }]} />
       </View>
 
       <CustomButton
