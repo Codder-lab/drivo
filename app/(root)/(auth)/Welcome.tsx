@@ -1,7 +1,14 @@
 import { onboarding } from '@/constants';
 import { router } from 'expo-router';
 import { useRef, useState } from 'react';
-import { Text, StyleSheet, TouchableOpacity, View, Image, useColorScheme } from 'react-native';
+import {
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  Image,
+  useColorScheme,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Swiper from 'react-native-swiper';
 import { LightColors, DarkColors, FONTS } from '@/constants';
@@ -15,7 +22,9 @@ const Welcome = () => {
   const theme = useColorScheme() === 'dark' ? DarkColors : LightColors;
 
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]}>
+    <SafeAreaView
+      style={[styles.container, { backgroundColor: theme.background }]}
+    >
       <TouchableOpacity
         onPress={() => {
           router.replace('/(root)/(auth)/Signup');
@@ -27,17 +36,27 @@ const Welcome = () => {
       <Swiper
         ref={swiperRef}
         loop={false}
-        dot={<View style={[styles.dot, { backgroundColor: theme.grayMedium }]} />}
-        activeDot={<View style={[styles.activeDot, { backgroundColor: theme.black }]} />}
+        dot={
+          <View style={[styles.dot, { backgroundColor: theme.grayMedium }]} />
+        }
+        activeDot={
+          <View style={[styles.activeDot, { backgroundColor: theme.black }]} />
+        }
         onIndexChanged={(index) => setCurrentIndex(index)}
       >
         {onboarding.map((item) => (
           <View key={item.id} style={styles.onboardingContainer}>
             <Image source={item.image} style={styles.onboardingImage} />
             <View style={styles.onboardingTextContainer}>
-              <Text style={[styles.onboardingText, { color: theme.black }]}>{item.title}</Text>
+              <Text style={[styles.onboardingText, { color: theme.black }]}>
+                {item.title}
+              </Text>
             </View>
-            <Text style={[styles.onboardingDescription, { color: theme.grayText }]}>{item.description}</Text>
+            <Text
+              style={[styles.onboardingDescription, { color: theme.grayText }]}
+            >
+              {item.description}
+            </Text>
           </View>
         ))}
       </Swiper>
@@ -62,11 +81,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     alignItems: 'center',
-    //backgroundColor: COLORS.white,
     height: height * 1,
   },
   skipBtn: {
-    //width: '100%',
     alignItems: 'flex-end',
     padding: width * 0.08,
     position: 'absolute',
@@ -75,7 +92,6 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   textBtn: {
-    //color: COLORS.black,
     fontSize: width * 0.038,
     fontFamily: FONTS.bold,
   },
@@ -83,14 +99,12 @@ const styles = StyleSheet.create({
     width: width * 0.08,
     height: height * 0.005,
     marginHorizontal: 1,
-    //backgroundColor: COLORS.grayMedium,
     borderRadius: 999,
   },
   activeDot: {
     width: width * 0.08,
     height: height * 0.005,
     marginHorizontal: 1,
-    //backgroundColor: COLORS.primary,
     borderRadius: width * 0.08,
   },
   onboardingContainer: {
@@ -113,18 +127,16 @@ const styles = StyleSheet.create({
     marginTop: width * 0.01,
   },
   onboardingText: {
-    //color: COLORS.black,
     fontSize: width * 0.065,
     fontFamily: FONTS.bold,
     marginHorizontal: width * 0.07,
     textAlign: 'center',
   },
   onboardingDescription: {
-    //color: COLORS.grayText,
     fontSize: width * 0.04,
     fontFamily: FONTS.semiBold,
     textAlign: 'center',
     marginHorizontal: width * 0.07,
     marginBottom: height * 0.22,
-  }
+  },
 });

@@ -121,6 +121,7 @@ export const LightColors = {
   white: '#FFFFFF',
   black: '#000000',
   transparent: '#00000000',
+  lightBlack: '#F3F4F6',
 };
 
 // Dark mode color scheme
@@ -143,6 +144,7 @@ export const DarkColors = {
   white: '#000000',
   black: '#FFFFFF',
   transparent: '#00000000',
+  lightBlack: '#454545',
 };
 
 // Fonts

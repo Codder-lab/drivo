@@ -18,6 +18,7 @@ type InputFieldProps = {
   icon?: ImageSourcePropType;
   value: string;
   secureTextEntry?: boolean;
+  keyboardType?: TextInputProps['keyboardType'];
   onChangeText: (text: string) => void;
 };
 
@@ -27,6 +28,7 @@ const InputField: React.FC<InputFieldProps> = ({
     icon,
     value,
     secureTextEntry,
+    keyboardType,
     onChangeText,
   }) => {
   const [isFocused, setIsFocused] = useState(false);
@@ -40,6 +42,7 @@ const InputField: React.FC<InputFieldProps> = ({
           styles.inputFieldContainer,
           { borderColor: isFocused ? theme.black : theme.grayLight },
           { backgroundColor: theme.grayLight },
+          { borderColor: theme.black }
         ]}
       >
         {icon && <Image source={icon} style={styles.inputIcon} />}
@@ -51,7 +54,8 @@ const InputField: React.FC<InputFieldProps> = ({
           style={[styles.textInputContainer, { color: theme.black }]}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          placeholderTextColor={theme.gray}
+          placeholderTextColor={theme.grayText}
+          keyboardType={keyboardType}
         />
       </View>
     </View>
@@ -73,12 +77,10 @@ const styles = StyleSheet.create({
     height: width * 0.053,
     left: width * 0.03,
     top: height * 0.002,
-    //tintColor: COLORS.gray,
   },
   inputFieldContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    //backgroundColor: COLORS.grayLight,
     borderWidth: 0.5,
     borderRadius: 9999,
     padding: width * 0.025,

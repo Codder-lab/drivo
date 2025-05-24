@@ -1,5 +1,4 @@
 import {
-  Image,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
@@ -15,19 +14,47 @@ import { width, height } from '@/constants/Dimensions';
 import { useState } from 'react';
 import InputField from '@/components/InputField';
 import CustomButton from '@/components/CustomButton';
-import { Link } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 import OAuth from '@/components/OAuth';
+import { useSignIn } from '@clerk/clerk-expo';
 
 const Signin = () => {
+  const { signIn, setActive, isLoaded } = useSignIn();
+  const router = useRouter();
+
   const [form, setForm] = useState({
     email: '',
     password: '',
   });
-  const [isFocused, setIsFocused] = useState(false);
-  const onSignInPress = async () => {};
   const theme = useColorScheme() === 'dark' ? DarkColors : LightColors;
-  const signInImage =
-    useColorScheme() == 'dark' ? images.signUpCar : images.signUpCarDark;
+
+  // Handle the submission of the sign-in form
+  const onSignInPress = async () => {
+    if (!isLoaded) return;
+
+    // Start the sign-in process using the email and password provided
+    try {
+      const signInAttempt = await signIn.create({
+        identifier: form.email,
+        password: form.password,
+      });
+
+      // If sign-in process is complete, set the created session as active
+      // and redirect the user
+      if (signInAttempt.status === 'complete') {
+        await setActive({ session: signInAttempt.createdSessionId });
+        router.replace('/');
+      } else {
+        // If the status isn't complete, check why. User might need to
+        // complete further steps.
+        console.error(JSON.stringify(signInAttempt, null, 2));
+      }
+    } catch (err) {
+      // See https://clerk.com/docs/custom-flows/error-handling
+      // for more info on error handling
+      console.error(JSON.stringify(err, null, 2));
+    }
+  };
 
   return (
     <ScrollView
@@ -69,7 +96,10 @@ const Signin = () => {
               {/* OAuth */}
               <OAuth />
 
-              <Link href={'/(root)/(auth)/Signup'} style={[styles.alreadyLink, { color: theme.gray }]}>
+              <Link
+                href={'/(root)/(auth)/Signup'}
+                style={[styles.alreadyLink, { color: theme.gray }]}
+              >
                 <Text>Don't have an account? </Text>
                 <Text style={[styles.alreadyLogin, { color: theme.black }]}>
                   Sign Up
@@ -90,18 +120,15 @@ export default Signin;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    //backgroundColor: COLORS.white,
   },
   createAccountContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    //backgroundColor: COLORS.white,
     height: height * 0.15,
   },
   createAccountText: {
     fontSize: width * 0.08,
-    //color: COLORS.black,
     fontFamily: FONTS.bold,
     position: 'absolute',
     top: height * 0.08,
@@ -122,7 +149,6 @@ const styles = StyleSheet.create({
     fontFamily: FONTS.regular,
   },
   alreadyLogin: {
-    //color: COLORS.primary,
     fontSize: 14,
   },
 });

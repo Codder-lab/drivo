@@ -47,21 +47,15 @@ const CustomButton: React.FC<CustomButtonProps> = ({
 const styles = StyleSheet.create({
   button: {
     width: width * 0.8,
+    borderWidth: 1,
     borderRadius: width * 0.1,
     padding: width * 0.04,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOpacity: 0.3,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 3,
-    elevation: 3,
-    //backgroundColor: COLORS.primary,
     marginBottom: height * 0.025,
   },
   buttonText: {
-    //color: COLORS.white,
     fontSize: width * 0.04,
     fontWeight: 'bold',
     fontFamily: FONTS.bold,

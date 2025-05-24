@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
   authContainer: {
     flex: 1,
     height: height * 0.001,
-    //backgroundColor: COLORS.grayMedium,
     marginHorizontal: width * 0.03,
   },
   authText: {
@@ -56,7 +55,6 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop: height * 0.03,
     shadowColor: '#000',
-    //backgroundColor: COLORS.black,
   },
   icon: {
     width: 15,
