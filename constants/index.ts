@@ -16,13 +16,11 @@ import marker from '@/assets/icons/marker.png';
 import out from '@/assets/icons/out.png';
 import person from '@/assets/icons/person.png';
 import pin from '@/assets/icons/pin.png';
-import point from '@/assets/icons/point.png';
 import profile from '@/assets/icons/profile.png';
 import search from '@/assets/icons/search.png';
 import selectedMarker from '@/assets/icons/selected-marker.png';
 import star from '@/assets/icons/star.png';
 import target from '@/assets/icons/target.png';
-import to from '@/assets/icons/to.png';
 import check from '@/assets/images/check.png';
 import getStarted from '@/assets/images/get-started.png';
 import message from '@/assets/images/message.png';
@@ -32,6 +30,10 @@ import onboarding2 from '@/assets/images/onboarding2.png';
 import onboarding3 from '@/assets/images/onboarding3.png';
 import carDark from '@/assets/images/car-dark.png';
 import carLight from '@/assets/images/car-light.png';
+import toLight from '@/assets/icons/to_light.png';
+import toDark from '@/assets/icons/to_dark.png';
+import pointLight from '@/assets/icons/point_light.png';
+import pointDark from '@/assets/icons/point_dark.png';
 
 export const images = {
   onboarding1,
@@ -64,13 +66,15 @@ export const icons = {
   out,
   person,
   pin,
-  point,
   profile,
   search,
   selectedMarker,
   star,
   target,
-  to,
+  toDark,
+  toLight,
+  pointLight,
+  pointDark
 };
 
 export const onboarding = [
@@ -114,8 +118,8 @@ export const LightColors = {
   outlineBorder: '#D1D5DB',
   textPrimary: '#000000',
   textSecondary: '#6B7280',
-  textDanger: '#FEE2E2',
-  textSuccess: '#DCFCE7',
+  textDanger: '#f50707',
+  textSuccess: '#02c244',
   textDefault: '#000000',
   grayText: '#858585',
   white: '#FFFFFF',

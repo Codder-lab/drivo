@@ -1,6 +1,7 @@
 import { icons } from '@/constants';
 import { Tabs } from 'expo-router';
 import { Image, View, StyleSheet, ImageSourcePropType } from 'react-native';
+import { width, height } from '@/constants/Dimensions';
 
 const TabIcon = ({
   focused,
@@ -27,12 +28,13 @@ const Layout = () => (
       tabBarShowLabel: false,
       tabBarStyle: {
         backgroundColor: '#333333',
-        borderRadius: 50,
+        borderRadius: width * 0.1,
         paddingBottom: 0,
         overflow: 'hidden',
-        marginHorizontal: 20,
-        marginBottom: 20,
-        height: 78,
+        //marginHorizontal: 20,
+        marginHorizontal: width * 0.06,
+        marginBottom: width * 0.06,
+        height: width * 0.2,
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -92,25 +94,25 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 999,
-    marginBottom: 30,
+    borderRadius: width * 0.08,
+    marginBottom: width * 0.08,
   },
   outerCircleFocused: {
     backgroundColor: '#D1D5DB',
   },
   innerCircle: {
-    width: 48,
-    height: 48,
+    width: width * 0.13,
+    height: width * 0.13,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 999,
+    borderRadius: width * 0.08,
   },
   innerCircleFocused: {
     backgroundColor: '#9CA3AF',
   },
   icon: {
-    width: 28,
-    height: 28,
+    width: width * 0.08,
+    height: width * 0.08,
     tintColor: 'white',
   },
 });
