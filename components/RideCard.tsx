@@ -158,8 +158,8 @@ const styles = StyleSheet.create({
     marginBottom: width * 0.03,
   },
   icon: {
-    width: width * 0.05,
-    height: width * 0.05,
+    width: width * 0.04,
+    height: width * 0.04,
     marginRight: width * 0.02,
   },
   locationText: {
