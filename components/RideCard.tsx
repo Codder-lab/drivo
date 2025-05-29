@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
   },
   locationText: {
     fontSize: width * 0.036,
-    fontFamily: 'JakartaMedium',
+    fontFamily: FONTS.medium,
     flex: 1,
   },
   infoContainer: {
@@ -182,11 +182,11 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: width * 0.036,
-    fontFamily: 'JakartaMedium',
+    fontFamily: FONTS.medium,
   },
   value: {
     fontSize: width * 0.036,
-    fontFamily: 'JakartaBold',
+    fontFamily: FONTS.bold,
   },
   statusPaid: {
     textTransform: 'capitalize',
